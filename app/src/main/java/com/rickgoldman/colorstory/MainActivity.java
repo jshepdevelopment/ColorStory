@@ -27,12 +27,11 @@ import android.widget.LinearLayout;
 public class MainActivity extends Activity implements OnClickListener {
 
     private DrawingView drawView;
-    private Canvas canvasPage1, canvasPage2, canvasPage3, canvasPage4, canvasPage5;
     private Bitmap firstPageBitmap, secondPageBitmap, thirdPageBitmap, fourthPageBitmap,
                     fifthPageBitmap;
     private TextView pageNumberView, testView;
     private float smallBrush, mediumBrush, largeBrush;
-    private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn, nextBtn, prevBtn;
+    private ImageButton currPaint; // drawBtn, eraseBtn, newBtn, saveBtn, nextBtn, prevBtn;
     private int pageNumber = 1;
     private int drawingUpdated = 0;
     private int firststep = 0;
@@ -41,6 +40,8 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageButton drawBtn, eraseBtn, newBtn, saveBtn, nextBtn, prevBtn;
 
         drawView = (DrawingView)findViewById(R.id.drawing);
         pageNumberView = (TextView) this.findViewById(R.id.viewPageNumber);
@@ -163,6 +164,8 @@ public class MainActivity extends Activity implements OnClickListener {
         }
 
         else if(view.getId()==R.id.new_btn){
+
+            /*
             //new button
             AlertDialog.Builder newDialog = new AlertDialog.Builder(this);
             newDialog.setTitle("New drawing");
@@ -179,7 +182,25 @@ public class MainActivity extends Activity implements OnClickListener {
                 }
             });
             newDialog.show();
-
+            */
+            // create an instance of ListSelectorDialog.
+            ListSelectorDialog dlg = new ListSelectorDialog(this, "Select an Operator");
+            // create our arrays of keys and values to send to the dialog.
+            String[] listk = new String[] {"+", "-", "*", "/", "%"};
+            String[] listv = new String[] {"+ Plus", "- Minus", "* Multiply", "/ Divide", "% Modulus"};
+                // show the list dialog.
+            dlg.show(listv, listk, new ListSelectorDialog.listSelectorInterface() {
+                // procedure if user cancels the dialog.
+                public void selectorCanceled() {
+                    Toast.makeText(getApplicationContext(),
+                            "User Canceled the request!", 1).show();
+                }
+                // procedure for when a user selects an item in the dialog.
+                public void selectedItem(String key, String item) {
+                    Toast.makeText(getApplicationContext(),
+                            "User Has selected item '"+item+"' having key '"+key+"'!", 1).show();
+                }
+            });
         }
 
         else if(view.getId()==R.id.save_btn){
@@ -234,19 +255,19 @@ public class MainActivity extends Activity implements OnClickListener {
                         //Assign images based on page number.
                         case 1: {
                             firstPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            canvasPage1 = new Canvas(firstPageBitmap);
+                            //Canvas canvasPage1 = new Canvas(firstPageBitmap);
 
                             /*Hack necessary because unable in initialize in OnCreate */
                             if (firststep == 0) {
                                 drawView.startNew();
                                 secondPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                                canvasPage2 = new Canvas(secondPageBitmap);
+                                //canvasPage2 = new Canvas(secondPageBitmap);
                                 thirdPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                                canvasPage3 = new Canvas(thirdPageBitmap);
+                                //canvasPage3 = new Canvas(thirdPageBitmap);
                                 fourthPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                                canvasPage4 = new Canvas(fourthPageBitmap);
+                                //canvasPage4 = new Canvas(fourthPageBitmap);
                                 fifthPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                                canvasPage5 = new Canvas(fifthPageBitmap);
+                                //canvasPage5 = new Canvas(fifthPageBitmap);
                                 firststep = 1;
                             }
 
@@ -254,22 +275,22 @@ public class MainActivity extends Activity implements OnClickListener {
                         }
                         case 2: {
                             secondPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            canvasPage2 = new Canvas(secondPageBitmap);
+                            //canvasPage2 = new Canvas(secondPageBitmap);
                             break;
                         }
                         case 3: {
                             thirdPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            canvasPage3 = new Canvas(thirdPageBitmap);
+                            //canvasPage3 = new Canvas(thirdPageBitmap);
                             break;
                         }
                         case 4: {
                             fourthPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            canvasPage4 = new Canvas(fourthPageBitmap);
+                            //canvasPage4 = new Canvas(fourthPageBitmap);
                             break;
                         }
                         case 5: {
                             fifthPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            canvasPage5 = new Canvas(fifthPageBitmap);
+                            //canvasPage5 = new Canvas(fifthPageBitmap);
                             break;
                         }
                         default: {
@@ -345,27 +366,27 @@ public class MainActivity extends Activity implements OnClickListener {
                         //Assign images based on page number.
                         case 1: {
                             firstPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            canvasPage1 = new Canvas(firstPageBitmap);
+                            //canvasPage1 = new Canvas(firstPageBitmap);
                             break;
                         }
                         case 2: {
                             secondPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            canvasPage2 = new Canvas(secondPageBitmap);
+                            //canvasPage2 = new Canvas(secondPageBitmap);
                             break;
                         }
                         case 3: {
                             thirdPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            canvasPage3 = new Canvas(thirdPageBitmap);
+                            //canvasPage3 = new Canvas(thirdPageBitmap);
                             break;
                         }
                         case 4: {
                             fourthPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            canvasPage4 = new Canvas(fourthPageBitmap);
+                            //canvasPage4 = new Canvas(fourthPageBitmap);
                             break;
                         }
                         case 5: {
                             fifthPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            canvasPage5 = new Canvas(fifthPageBitmap);
+                            //canvasPage5 = new Canvas(fifthPageBitmap);
                             break;
                         }
                         default: {
