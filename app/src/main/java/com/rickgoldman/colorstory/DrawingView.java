@@ -1,7 +1,6 @@
 package com.rickgoldman.colorstory;
 
 import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.view.MotionEvent;
 import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
+
 import android.util.TypedValue;
 
 /**
@@ -31,7 +30,7 @@ public class DrawingView extends View {
     //canvas bitmap
     private Bitmap canvasBitmap;
     private float brushSize, lastBrushSize;
-    private boolean erase=false;
+    //private boolean erase=false;
 
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -44,8 +43,8 @@ public class DrawingView extends View {
     }
 
     public void setErase(boolean isErase){
-        erase=isErase;
-        if(erase)
+        //private boolean erase=isErase;
+        if(isErase)
         //drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
         this.setColor("#FFFFFFFF");
 
@@ -71,9 +70,10 @@ public class DrawingView extends View {
 
     public void setBrushSize(float newSize){
         //update size
-        float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+        //float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                //newSize, getResources().getDisplayMetrics());
+        brushSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 newSize, getResources().getDisplayMetrics());
-        brushSize=pixelAmount;
         drawPaint.setStrokeWidth(brushSize);
     }
 

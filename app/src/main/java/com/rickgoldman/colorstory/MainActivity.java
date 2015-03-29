@@ -41,6 +41,7 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         drawView = (DrawingView)findViewById(R.id.drawing);
         pageNumberView = (TextView) this.findViewById(R.id.viewPageNumber);
         pageNumberView.setText(Integer.toString(pageNumber));
@@ -68,7 +69,6 @@ public class MainActivity extends Activity implements OnClickListener {
         prevBtn = (ImageButton)findViewById(R.id.prev_btn);
         prevBtn.setOnClickListener(this);
 
-
         drawView.setOnTouchListener(new View.OnTouchListener() {
 
             public boolean onTouch(View v, MotionEvent event) {
@@ -81,7 +81,6 @@ public class MainActivity extends Activity implements OnClickListener {
         });
 
     }
-
 
     @Override
     public void onClick(View view){
