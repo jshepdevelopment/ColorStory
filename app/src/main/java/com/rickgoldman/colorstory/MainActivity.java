@@ -183,24 +183,6 @@ public class MainActivity extends Activity implements OnClickListener {
             });
             newDialog.show();
             */
-            // create an instance of ListSelectorDialog.
-            ListSelectorDialog dlg = new ListSelectorDialog(this, "Select an Operator");
-            // create our arrays of keys and values to send to the dialog.
-            String[] listk = new String[] {"+", "-", "*", "/", "%"};
-            String[] listv = new String[] {"+ Plus", "- Minus", "* Multiply", "/ Divide", "% Modulus"};
-                // show the list dialog.
-            dlg.show(listv, listk, new ListSelectorDialog.listSelectorInterface() {
-                // procedure if user cancels the dialog.
-                public void selectorCanceled() {
-                    Toast.makeText(getApplicationContext(),
-                            "User Canceled the request!", 1).show();
-                }
-                // procedure for when a user selects an item in the dialog.
-                public void selectedItem(String key, String item) {
-                    Toast.makeText(getApplicationContext(),
-                            "User Has selected item '"+item+"' having key '"+key+"'!", 1).show();
-                }
-            });
         }
 
         else if(view.getId()==R.id.save_btn){
