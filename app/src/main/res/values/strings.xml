@@ -13,5 +13,16 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <string-array name="crayonarray">
+        <item>bluecrayon</item>
+        <item>browncrayon</item>
+        <item>darkyellowcrayon</item>
+        <item>graycrayon</item>
+        <item>greencrayon</item>
+        <item>lightgreencrayon</item>
+        <item>orangecrayon</item>
+        <item>redcrayon</item>
+    </string-array>
+
 
 </resources>

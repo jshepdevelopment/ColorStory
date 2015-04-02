@@ -3,6 +3,7 @@ package com.rickgoldman.colorstory;
 import android.app.Activity;
 import java.util.UUID;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
@@ -164,6 +165,9 @@ public class MainActivity extends Activity implements OnClickListener {
         }
 
         else if(view.getId()==R.id.new_btn){
+            final Intent intent = new Intent(this, ColorSelect.class);
+
+            startActivityForResult(intent, 1);
 
             /*
             //new button

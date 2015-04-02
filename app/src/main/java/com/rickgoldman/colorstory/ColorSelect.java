@@ -34,7 +34,7 @@ public class ColorSelect extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ColorAdapter c = colorList.get(position);
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra(RESULT_COLORCODE, c.getCode());
+                returnIntent.putExtra(RESULT_COLORCODE, c.getCrayonCode());
                 setResult(RESULT_OK, returnIntent);
                 imgs.recycle(); //recycle images
                 finish();
@@ -44,8 +44,8 @@ public class ColorSelect extends ListActivity {
 
     private void populateColorList() {
         colorList = new ArrayList<ColorAdapter>();
-        imgs = getResources().obtainTypedArray(R.array.crayonsarray);
-        for(int i = 0; i < R.array.crayonsarray.length; i++){
+        imgs = getResources().obtainTypedArray(R.array.crayonarray);
+        for(int i = 0; i < R.array.crayonarray; i++){
             colorList.add(new ColorAdapter(imgs.getDrawable(i)));
         }
     }
@@ -53,11 +53,17 @@ public class ColorSelect extends ListActivity {
     public class ColorAdapter {
 
         private Drawable crayon;
+
         public ColorAdapter(Drawable crayon){
 
             this.crayon = crayon;
         }
-        public Drawable getFlag() {
+        public String getCrayonCode() {
+            String crayonCode = "Test";
+            return crayonCode;
+        }
+
+        public Drawable getCrayon() {
             return crayon;
         }
     }

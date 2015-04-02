@@ -22,7 +22,7 @@ public class ColorListArrayAdapter extends ArrayAdapter<ColorSelect.ColorAdapter
         protected ImageView crayon;
     }
     ColorListArrayAdapter(Activity context, List<ColorSelect.ColorAdapter> list) {
-        super(context, R.layout.activity_colorcode_row, list);
+        super(context, R.layout.activity_colorselect, list);
         this.context = context;
         this.list = list;
     }
@@ -33,7 +33,7 @@ public class ColorListArrayAdapter extends ArrayAdapter<ColorSelect.ColorAdapter
 
         if (convertView == null) {
             LayoutInflater inflator = context.getLayoutInflater();
-            view = inflator.inflate(R.layout.activity_colorcode_row, null);
+            view = inflator.inflate(R.layout.activity_colorselect, null);
             final ViewHolder viewHolder = new ViewHolder();
             viewHolder.crayon = (ImageView) view.findViewById(R.id.crayon);
             view.setTag(viewHolder);
@@ -42,7 +42,7 @@ public class ColorListArrayAdapter extends ArrayAdapter<ColorSelect.ColorAdapter
         }
 
         ViewHolder holder = (ViewHolder) view.getTag();
-        holder.crayon.setImageDrawable(list.get(position).getFlag());
+        holder.crayon.setImageDrawable(list.get(position).getCrayon());
         return view;
     }
 }
