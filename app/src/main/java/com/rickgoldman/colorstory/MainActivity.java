@@ -165,8 +165,8 @@ public class MainActivity extends Activity implements OnClickListener {
         }
 
         else if(view.getId()==R.id.new_btn){
-            final Intent intent = new Intent(this, ColorSelect.class);
 
+            final Intent intent = new Intent(this, ColorSelect.class);
             startActivityForResult(intent, 1);
 
             /*
@@ -470,6 +470,16 @@ public class MainActivity extends Activity implements OnClickListener {
             currPaint=(ImageButton)view;
         }
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK){
+            String colorCode = data.getStringExtra(ColorSelect.RESULT_COLORCODE);
+            Toast.makeText(this, "You selected colorcode: " + colorCode, Toast.LENGTH_LONG).show();
+            drawView.setColor(colorCode);
+        }
     }
 
 }

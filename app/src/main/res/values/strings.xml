@@ -14,14 +14,14 @@
     <string name="previous">Previous</string>
 
     <string-array name="crayonarray">
-        <item>bluecrayon</item>
-        <item>browncrayon</item>
-        <item>darkyellowcrayon</item>
-        <item>graycrayon</item>
-        <item>greencrayon</item>
-        <item>lightgreencrayon</item>
-        <item>orangecrayon</item>
-        <item>redcrayon</item>
+        <item>@drawable/bluecrayon</item>
+        <item>@drawable/browncrayon</item>
+        <item>@drawable/darkyellowcrayon</item>
+        <item>@drawable/graycrayon</item>
+        <item>@drawable/greencrayon</item>
+        <item>@drawable/lightgreencrayon</item>
+        <item>@drawable/orangecrayon</item>
+        <item>@drawable/redcrayon</item>
     </string-array>
 
 

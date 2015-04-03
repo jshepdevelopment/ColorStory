@@ -3,7 +3,6 @@ package com.rickgoldman.colorstory;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -45,7 +44,7 @@ public class ColorSelect extends ListActivity {
     private void populateColorList() {
         colorList = new ArrayList<ColorAdapter>();
         imgs = getResources().obtainTypedArray(R.array.crayonarray);
-        for(int i = 0; i < R.array.crayonarray; i++){
+        for(int i = 0; i < 7; i++){
             colorList.add(new ColorAdapter(imgs.getDrawable(i)));
         }
     }
@@ -59,7 +58,7 @@ public class ColorSelect extends ListActivity {
             this.crayon = crayon;
         }
         public String getCrayonCode() {
-            String crayonCode = "Test";
+            String crayonCode = "#FFFF0000";
             return crayonCode;
         }
 
