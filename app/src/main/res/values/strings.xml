@@ -13,7 +13,8 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string-array name="crayonarray">
+    <!-- crayon_array and crayon_codes must always have the same number of items. -->
+    <string-array name="crayon_array">
         <item>@drawable/bluecrayon</item>
         <item>@drawable/browncrayon</item>
         <item>@drawable/darkyellowcrayon</item>
@@ -24,7 +25,7 @@
         <item>@drawable/redcrayon</item>
     </string-array>
 
-    <string-array name="colorcodearray">
+    <string-array name="crayon_codes">
         <item>#ff0003ff</item>
         <item>#ffff9000</item>
         <item>#fffeff00</item>

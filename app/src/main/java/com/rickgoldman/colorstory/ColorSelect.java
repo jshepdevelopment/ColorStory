@@ -18,7 +18,7 @@ import java.util.List;
 public class ColorSelect extends ListActivity {
 
     public static String RESULT_COLORCODE = "colorcode";
-    public String[] colornames, colorcodes;
+    public String[] crayonCodes;
     private TypedArray imgs;
     private List<ColorAdapter> colorList;
 
@@ -43,26 +43,31 @@ public class ColorSelect extends ListActivity {
 
     private void populateColorList() {
         colorList = new ArrayList<ColorAdapter>();
-        imgs = getResources().obtainTypedArray(R.array.crayonarray);
-        for(int i = 0; i < 7; i++){
-            colorList.add(new ColorAdapter(imgs.getDrawable(i)));
+        crayonCodes = getResources().getStringArray(R.array.crayon_codes);
+        imgs = getResources().obtainTypedArray(R.array.crayon_array);
+        for(int i = 0; i < crayonCodes.length; i++){
+            colorList.add(new ColorAdapter(crayonCodes[i], imgs.getDrawable(i)));
         }
     }
 
     public class ColorAdapter {
 
         private Drawable crayon;
+        private String crayonCode;
 
-        public ColorAdapter(Drawable crayon){
+        public ColorAdapter(String crayonCode, Drawable crayon){
 
             this.crayon = crayon;
+            this.crayonCode = crayonCode;
+
         }
         public String getCrayonCode() {
-            String crayonCode = "#FFFF0000";
+            //String crayonCode = "#FFFF0000";
             return crayonCode;
         }
 
         public Drawable getCrayon() {
+
             return crayon;
         }
     }

@@ -16,6 +16,13 @@
         <dex dex="C:\Users\Batman\AndroidStudioProjects\ColorStory\app\build\intermediates\pre-dexed\debug\classes-72e6f714e4d145fc01100f3725b6b636c51b8e20.jar" />
     </item>
     <item
+        jar="C:\Users\Batman\Documents\adt-bundle-windows-x86_64-20140702\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Batman\AndroidStudioProjects\ColorStory\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-587013cf7b33fc8c8470981ee720c99b446d7fa8.jar" />
+    </item>
+    <item
         jar="C:\Users\Batman\Documents\android studio sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
