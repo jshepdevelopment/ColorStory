@@ -24,5 +24,16 @@
         <item>@drawable/redcrayon</item>
     </string-array>
 
+    <string-array name="colorcodearray">
+        <item>#ff0003ff</item>
+        <item>#ffff9000</item>
+        <item>#fffeff00</item>
+        <item>#ff8a8b85</item>
+        <item>#ff26ff00</item>
+        <item>#ff64ff82</item>
+        <item>#ffff6b00</item>
+        <item>#FFFF0000</item>
+    </string-array>
+
 
 </resources>
