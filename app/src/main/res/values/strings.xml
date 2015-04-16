@@ -15,25 +15,64 @@
 
     <!-- crayon_array and crayon_codes must always have the same number of items. -->
     <string-array name="crayon_array">
-        <item>@drawable/bluecrayon</item>
-        <item>@drawable/browncrayon</item>
-        <item>@drawable/darkyellowcrayon</item>
-        <item>@drawable/graycrayon</item>
-        <item>@drawable/greencrayon</item>
-        <item>@drawable/lightgreencrayon</item>
-        <item>@drawable/orangecrayon</item>
-        <item>@drawable/redcrayon</item>
+        <item>@drawable/red</item>
+        <item>@drawable/vermillion</item>
+        <item>@drawable/amber</item>
+        <item>@drawable/gold</item>
+        <item>@drawable/yellow</item>
+        <item>@drawable/apple</item>
+        <item>@drawable/chartreuse</item>
+        <item>@drawable/lime</item>
+        <item>@drawable/green</item>
+        <item>@drawable/mint</item>
+        <item>@drawable/jade</item>
+        <item>@drawable/turquoise</item>
+        <item>@drawable/cyan</item>
+        <item>@drawable/azure</item>
+        <item>@drawable/sapphire</item>
+        <item>@drawable/cobalt</item>
+        <item>@drawable/blue</item>
+        <item>@drawable/violet</item>
+        <item>@drawable/purple</item>
+        <item>@drawable/orchid</item>
+        <item>@drawable/magenta</item>
+        <item>@drawable/fuchsia</item>
+        <item>@drawable/carmine</item>
+        <item>@drawable/scarlet</item>
+        <item>@drawable/black</item>
+        <item>@drawable/grey</item>
+        <item>@drawable/white</item>
+
     </string-array>
 
     <string-array name="crayon_codes">
-        <item>#ff0003ff</item>
-        <item>#ffff9000</item>
-        <item>#fffeff00</item>
-        <item>#ff8a8b85</item>
-        <item>#ff26ff00</item>
-        <item>#ff64ff82</item>
-        <item>#ffff6b00</item>
-        <item>#FFFF0000</item>
+        <item>#ff0000</item>
+        <item>#ff3300</item>
+        <item>#ff6600</item>
+        <item>#ffcc00</item>
+        <item>#ffff00</item>
+        <item>#ccff00</item>
+        <item>#66ff00</item>
+        <item>#33ff00</item>
+        <item>#00ff00</item>
+        <item>#00ff33</item>
+        <item>#00ff66</item>
+        <item>#00ffcc</item>
+        <item>#00ffff</item>
+        <item>#00ccff</item>
+        <item>#0066ff</item>
+        <item>#0033ff</item>
+        <item>#0000ff</item>
+        <item>#6600ff</item>
+        <item>#9900ff</item>
+        <item>#cc00ff</item>
+        <item>#ff00ff</item>
+        <item>#ff00cc</item>
+        <item>#ff0066</item>
+        <item>#ff0033</item>
+        <item>#000000</item>
+        <item>#999999</item>
+        <item>#ffffff</item>
     </string-array>
 
 
