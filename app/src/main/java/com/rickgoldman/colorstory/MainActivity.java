@@ -37,6 +37,10 @@ public class MainActivity extends Activity implements OnClickListener {
     private int drawingUpdated = 0;
     private int firststep = 0;
 
+    private String colorName;
+    public String[] crayonNames;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -474,11 +478,48 @@ public class MainActivity extends Activity implements OnClickListener {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        crayonNames = getResources().getStringArray(R.array.crayon_names);
+
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1 && resultCode == Activity.RESULT_OK){
             String colorCode = data.getStringExtra(ColorSelect.RESULT_COLORCODE);
-            Toast.makeText(this, "You selected colorcode: " + colorCode, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "You selected colorcode: " + colorCode, Toast.LENGTH_LONG).show();
             drawView.setColor(colorCode);
+
+            //Check color code and assign color name
+            if(colorCode.equals("#ff0000")) colorName = crayonNames[0];
+            if(colorCode.equals("#ff3300")) colorName = crayonNames[1];
+            if(colorCode.equals("#ff6600")) colorName = crayonNames[2];
+            if(colorCode.equals("#ffcc00")) colorName = crayonNames[3];
+            if(colorCode.equals("#ffff00")) colorName = crayonNames[4];
+            if(colorCode.equals("#ccff00")) colorName = crayonNames[5];
+            if(colorCode.equals("#66ff00")) colorName = crayonNames[6];
+            if(colorCode.equals("#33ff00")) colorName = crayonNames[7];
+            if(colorCode.equals("#00ff00")) colorName = crayonNames[8];
+            if(colorCode.equals("#00ff33")) colorName = crayonNames[9];
+            if(colorCode.equals("#00ff66")) colorName = crayonNames[10];
+            if(colorCode.equals("#00ffcc")) colorName = crayonNames[11];
+            if(colorCode.equals("#00ffff")) colorName = crayonNames[12];
+            if(colorCode.equals("#00ccff")) colorName = crayonNames[13];
+            if(colorCode.equals("#0066ff")) colorName = crayonNames[14];
+            if(colorCode.equals("#0033ff")) colorName = crayonNames[15];
+            if(colorCode.equals("#0000ff")) colorName = crayonNames[16];
+            if(colorCode.equals("#6600ff")) colorName = crayonNames[17];
+            if(colorCode.equals("#9900ff")) colorName = crayonNames[18];
+            if(colorCode.equals("#cc00ff")) colorName = crayonNames[19];
+            if(colorCode.equals("#ff00ff")) colorName = crayonNames[20];
+            if(colorCode.equals("#ff00cc")) colorName = crayonNames[21];
+            if(colorCode.equals("#ff0066")) colorName = crayonNames[22];
+            if(colorCode.equals("#ff0033")) colorName = crayonNames[23];
+            if(colorCode.equals("#000000")) colorName = crayonNames[24];
+            if(colorCode.equals("#999999")) colorName = crayonNames[25];
+            if(colorCode.equals("#ffffff")) colorName = crayonNames[26];
+
+            //String colorName = data.getStringExtra(ColorSelect.RESULT_COLORNAME);
+            Toast.makeText(this, colorName, Toast.LENGTH_LONG).show();
+            //drawView.setColor(colorCode);
+
         }
     }
 

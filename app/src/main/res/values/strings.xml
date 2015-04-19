@@ -16,7 +16,7 @@
     <!-- crayon_array and crayon_codes must always have the same number of items. -->
     <string-array name="crayon_array">
         <item>@drawable/red</item>
-        <item>@drawable/vermillion</item>
+        <item>@drawable/vermilion</item>
         <item>@drawable/amber</item>
         <item>@drawable/gold</item>
         <item>@drawable/yellow</item>
@@ -42,7 +42,36 @@
         <item>@drawable/black</item>
         <item>@drawable/grey</item>
         <item>@drawable/white</item>
+    </string-array>
 
+    <string-array name="crayon_names">
+        <item>Red</item>
+        <item>Vermilion</item>
+        <item>Amber</item>
+        <item>Gold</item>
+        <item>Yellow</item>
+        <item>Apple</item>
+        <item>Chartreuse</item>
+        <item>Lime</item>
+        <item>Green</item>
+        <item>Mint</item>
+        <item>Jade</item>
+        <item>Turquoise</item>
+        <item>Cyan</item>
+        <item>Azure</item>
+        <item>Sapphire</item>
+        <item>Cobalt</item>
+        <item>Blue</item>
+        <item>Violet</item>
+        <item>Purple</item>
+        <item>Orchid</item>
+        <item>Magenta</item>
+        <item>Fuchsia</item>
+        <item>Carmine</item>
+        <item>Scarlet</item>
+        <item>Black</item>
+        <item>Grey</item>
+        <item>White</item>
     </string-array>
 
     <string-array name="crayon_codes">

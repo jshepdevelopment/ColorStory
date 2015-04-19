@@ -18,7 +18,9 @@ import java.util.List;
 public class ColorSelect extends ListActivity {
 
     public static String RESULT_COLORCODE = "colorcode";
+
     public String[] crayonCodes;
+
     private TypedArray imgs;
     private List<ColorAdapter> colorList;
 
@@ -34,6 +36,7 @@ public class ColorSelect extends ListActivity {
                 ColorAdapter c = colorList.get(position);
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra(RESULT_COLORCODE, c.getCrayonCode());
+
                 setResult(RESULT_OK, returnIntent);
                 imgs.recycle(); //recycle images
                 finish();
