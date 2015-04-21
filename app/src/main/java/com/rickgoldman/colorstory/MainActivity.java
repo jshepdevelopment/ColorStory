@@ -30,9 +30,8 @@ public class MainActivity extends Activity implements OnClickListener {
     private DrawingView drawView;
     private Bitmap firstPageBitmap, secondPageBitmap, thirdPageBitmap, fourthPageBitmap,
                     fifthPageBitmap;
-    private TextView pageNumberView, testView;
     private float smallBrush, mediumBrush, largeBrush;
-    private ImageButton currPaint; // drawBtn, eraseBtn, newBtn, saveBtn, nextBtn, prevBtn;
+//    private ImageButton currPaint; // drawBtn, eraseBtn, newBtn, saveBtn, nextBtn, prevBtn;
     private int pageNumber = 1;
     private int drawingUpdated = 0;
     private int firststep = 0;
@@ -49,15 +48,7 @@ public class MainActivity extends Activity implements OnClickListener {
         ImageButton drawBtn, eraseBtn, newBtn, saveBtn, nextBtn, prevBtn;
 
         drawView = (DrawingView)findViewById(R.id.drawing);
-        pageNumberView = (TextView) this.findViewById(R.id.viewPageNumber);
-        pageNumberView.setText(Integer.toString(pageNumber));
 
-        testView = (TextView) this.findViewById(R.id.testView);
-        testView.setText(Integer.toString(drawingUpdated));
-
-        LinearLayout paintLayout = (LinearLayout)findViewById(R.id.paint_colors);
-        currPaint = (ImageButton)paintLayout.getChildAt(0);
-        currPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed));
         smallBrush = getResources().getInteger(R.integer.small_size);
         mediumBrush = getResources().getInteger(R.integer.medium_size);
         largeBrush = getResources().getInteger(R.integer.large_size);
@@ -66,7 +57,7 @@ public class MainActivity extends Activity implements OnClickListener {
         drawView.setBrushSize(mediumBrush);
         eraseBtn = (ImageButton)findViewById(R.id.erase_btn);
         eraseBtn.setOnClickListener(this);
-        newBtn = (ImageButton)findViewById(R.id.new_btn);
+        newBtn = (ImageButton)findViewById(R.id.color_btn);
         newBtn.setOnClickListener(this);
         saveBtn = (ImageButton)findViewById(R.id.save_btn);
         saveBtn.setOnClickListener(this);
@@ -79,8 +70,6 @@ public class MainActivity extends Activity implements OnClickListener {
 
             public boolean onTouch(View v, MotionEvent event) {
                 drawingUpdated = 1;
-                testView.setText(Integer.toString(drawingUpdated));
-
                 Log.d("test", "ontouch");
                 return false;
             }
@@ -168,7 +157,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
         }
 
-        else if(view.getId()==R.id.new_btn){
+        else if(view.getId()==R.id.color_btn){
 
             final Intent intent = new Intent(this, ColorSelect.class);
             startActivityForResult(intent, 1);
@@ -233,7 +222,6 @@ public class MainActivity extends Activity implements OnClickListener {
 
                 pageNumber++;
                 if (pageNumber >= 5) pageNumber = 5;
-                pageNumberView.setText(Integer.toString(pageNumber));
 
                 Drawable d;
                 drawView.setDrawingCacheEnabled(true);
@@ -245,19 +233,14 @@ public class MainActivity extends Activity implements OnClickListener {
                         //Assign images based on page number.
                         case 1: {
                             firstPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            //Canvas canvasPage1 = new Canvas(firstPageBitmap);
 
-                            /*Hack necessary because unable in initialize in OnCreate */
+                            //Check whether bitmaps are initialized. If not then initialize.
                             if (firststep == 0) {
                                 drawView.startNew();
                                 secondPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                                //canvasPage2 = new Canvas(secondPageBitmap);
                                 thirdPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                                //canvasPage3 = new Canvas(thirdPageBitmap);
                                 fourthPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                                //canvasPage4 = new Canvas(fourthPageBitmap);
                                 fifthPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                                //canvasPage5 = new Canvas(fifthPageBitmap);
                                 firststep = 1;
                             }
 
@@ -333,7 +316,6 @@ public class MainActivity extends Activity implements OnClickListener {
 
             }
 
-            testView.setText(Integer.toString(drawingUpdated));
             //Clear drawViewCache and clear drawView for next page
             drawView.setDrawingCacheEnabled(false);
 
@@ -344,8 +326,7 @@ public class MainActivity extends Activity implements OnClickListener {
             Drawable d;
             drawView.setDrawingCacheEnabled(true);
 
-            //go to next image in list
-
+                //go to next image in list
                 pageNumber--;
                 if (pageNumber <= 1) pageNumber = 1;
 
@@ -356,27 +337,22 @@ public class MainActivity extends Activity implements OnClickListener {
                         //Assign images based on page number.
                         case 1: {
                             firstPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            //canvasPage1 = new Canvas(firstPageBitmap);
                             break;
                         }
                         case 2: {
                             secondPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            //canvasPage2 = new Canvas(secondPageBitmap);
                             break;
                         }
                         case 3: {
                             thirdPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            //canvasPage3 = new Canvas(thirdPageBitmap);
                             break;
                         }
                         case 4: {
                             fourthPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            //canvasPage4 = new Canvas(fourthPageBitmap);
                             break;
                         }
                         case 5: {
                             fifthPageBitmap = Bitmap.createBitmap(drawView.getDrawingCache());
-                            //canvasPage5 = new Canvas(fifthPageBitmap);
                             break;
                         }
                         default: {
@@ -428,7 +404,6 @@ public class MainActivity extends Activity implements OnClickListener {
                 }
 
             }
-            pageNumberView.setText(Integer.toString(pageNumber));
             //Clear drawViewCache and clear drawView for next page
             drawView.setDrawingCacheEnabled(false);
 
@@ -458,33 +433,19 @@ public class MainActivity extends Activity implements OnClickListener {
         return super.onOptionsItemSelected(item);
     }
 
-    public void paintClicked(View view){
-
-        drawView.setErase(false);
-        drawView.setBrushSize(drawView.getLastBrushSize());
-
-        //use chosen color
-        if(view!=currPaint){
-        //update color
-            ImageButton imgView = (ImageButton)view;
-            String color = view.getTag().toString();
-            drawView.setColor(color);
-            imgView.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed));
-            currPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint));
-            currPaint=(ImageButton)view;
-        }
-
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        //assign crayon names from string array
         crayonNames = getResources().getStringArray(R.array.crayon_names);
 
+        //assign color code based on result from color select activity
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1 && resultCode == Activity.RESULT_OK){
             String colorCode = data.getStringExtra(ColorSelect.RESULT_COLORCODE);
-            //Toast.makeText(this, "You selected colorcode: " + colorCode, Toast.LENGTH_LONG).show();
+
+            //set color to color code
             drawView.setColor(colorCode);
 
             //Check color code and assign color name
@@ -516,9 +477,8 @@ public class MainActivity extends Activity implements OnClickListener {
             if(colorCode.equals("#999999")) colorName = crayonNames[25];
             if(colorCode.equals("#ffffff")) colorName = crayonNames[26];
 
-            //String colorName = data.getStringExtra(ColorSelect.RESULT_COLORNAME);
+            //Display color selection as toast.
             Toast.makeText(this, colorName, Toast.LENGTH_LONG).show();
-            //drawView.setColor(colorCode);
 
         }
     }

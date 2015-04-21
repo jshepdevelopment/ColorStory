@@ -11,6 +11,7 @@
     <string name="med">Medium</string>
     <string name="lrg">Large</string>
     <string name="next">Next</string>
+    <string name="crayon_box">Crayon Box</string>
     <string name="previous">Previous</string>
 
     <!-- crayon_array and crayon_codes must always have the same number of items. -->
