@@ -1,7 +1,12 @@
 package com.rickgoldman.colorstory;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.Point;
+import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.view.View;
 import android.graphics.Bitmap;
@@ -13,24 +18,23 @@ import android.graphics.PorterDuff;
 
 import android.util.TypedValue;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  * Created by Jason Shepherd on 3/23/2015.
  */
 
 public class DrawingView extends View {
 
-    //drawing path
-    private Path drawPath;
-    //drawing and canvas paint
+
+    private Path drawPath, nextDrawPath;
     private Paint drawPaint, canvasPaint;
-    //initial color
     private int paintColor = 0xFF660000;
-    //canvas
     private Canvas drawCanvas;
-    //canvas bitmap
     private Bitmap canvasBitmap;
     private float brushSize, lastBrushSize;
-    //private boolean erase=false;
 
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -54,7 +58,7 @@ public class DrawingView extends View {
 
     private void setupDrawing(){
 
-        //get drawing area setup for interaction
+
         brushSize = getResources().getInteger(R.integer.medium_size);
         lastBrushSize = brushSize;
         drawPath = new Path();
@@ -95,14 +99,26 @@ public class DrawingView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
 
+        //Scale and resize special bitmaps for crayon effect
+        nextDrawPath = drawPath;
+
         //draw view
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
         canvas.drawPath(drawPath, drawPaint);
+        canvas.drawPath(nextDrawPath, drawPaint);
+
 
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
+        //Random number generator
+        Random rand = new Random();
+        int minimum = 3;
+        int maximum = 8;
+        float randomNum = minimum + rand.nextInt((maximum - minimum) + 1);
+
         //detect user touch
         float touchX = event.getX();
         float touchY = event.getY();
@@ -113,9 +129,15 @@ public class DrawingView extends View {
                 break;
             case MotionEvent.ACTION_MOVE:
                 drawPath.lineTo(touchX, touchY);
+                nextDrawPath.lineTo(touchX-randomNum, touchY-randomNum);
+                nextDrawPath.lineTo(touchX+randomNum, touchY+randomNum);
+
+                invalidate();
                 break;
             case MotionEvent.ACTION_UP:
                 drawCanvas.drawPath(drawPath, drawPaint);
+                drawCanvas.drawPath(nextDrawPath, drawPaint);
+
                 drawPath.reset();
                 break;
             default:
@@ -130,6 +152,7 @@ public class DrawingView extends View {
         //set color
         invalidate();
         paintColor = Color.parseColor(newColor);
+       // drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.ADD));
         drawPaint.setColor(paintColor);
     }
 
